@@ -28,4 +28,9 @@
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\NotificationList\" />
+    <Folder Include="wwwroot\WriterImageFiles\" />
+  </ItemGroup>
+
 </Project>
