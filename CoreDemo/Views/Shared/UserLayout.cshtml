@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -7,7 +6,7 @@
 <html lang="zxx">
 
 <head>
-    <title>Benim Sitem</title>
+    <title>U&K Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -28,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="~/CoreBlogTema/css/fontawesome-all.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
           rel="stylesheet">
+    <link rel="shortcut icon" href="~/writer/assets/images/UK.ico" />
+
 </head>
 
 <body>
@@ -38,12 +39,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="row">
                 <div class="col-md-4 logo text-left">
                     <a class="navbar-brand" href="/Writer/Index/">
-                        <i class="fab fa-linode"></i> Benim Sitem
+                        <i class="fab fa-linode"></i> U&K Blog
                     </a>
                 </div>
-               
-                @await Html.PartialAsync("Partial2")       
-                
+
+                @await Html.PartialAsync("Partial2")
+
                 <div class="col-md-4 log-icons text-right">
 
                     <ul class="social_list1 mt-3">
@@ -78,17 +79,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         @await Html.PartialAsync("Partial1")
 
     </header>
-    <!--//header-->
-    <!--/main-->
+
     @RenderBody()
-    <!--//main-->
-    <!--footer-->
+
     @await Html.PartialAsync("Partial3")
-    <!---->
-    <!-- js -->
     <script src="~/CoreBlogTema/js/jquery-2.2.3.min.js"></script>
-    <!-- //js -->
-    <!--/ start-smoth-scrolling -->
     <script src="~/CoreBlogTema/js/move-top.js"></script>
     <script src="~/CoreBlogTema/js/easing.js"></script>
     <script>
@@ -101,7 +96,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
-    <!--// end-smoth-scrolling -->
 
     <script>
         $(document).ready(function () {
@@ -124,7 +118,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <span id="toTopHover" style="opacity: 1;"> </span>
     </a>
 
-    <!-- //Custom-JavaScript-File-Links -->
     <script src="~/CoreBlogTema/js/bootstrap.js"></script>
 
 

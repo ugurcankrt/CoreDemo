@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,51 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=CoreBlogDB;integrated security=true;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Match>()
+                .HasOne(x => x.HomeTeam)
+                .WithMany(y => y.HomeMatches)
+                .HasForeignKey(z => z.HomeTeamID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Match>()
+               .HasOne(x => x.AwayTeam)
+               .WithMany(y => y.AwayMatches)
+               .HasForeignKey(z => z.AwayTeamID)
+               .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Message2>()
+                .HasOne(x => x.SenderUser)
+                .WithMany(y => y.WriterSender)
+                .HasForeignKey(z => z.SenderID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Message2>()
+                .HasOne(x => x.ReceiverUser)
+                .WithMany(y => y.WriterReceiver)
+                .HasForeignKey(z => z.ReceiverID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Comment>()
+               .ToTable(i => i.HasTrigger("AddScoreInComment"));
+
+            modelBuilder.Entity<Blog>()
+              .ToTable(i => i.HasTrigger("AddBlogInRatingTable"));
+
+            base.OnModelCreating(modelBuilder);
+            //HomeMatches-->WriterSender
+            //AwayMatches-->WriterReceiver
+
+            //HomeTeam-->SenderUser
+            //AwayTeam-->ReceiverUser
         }
 
         public DbSet<About> Abouts { get; set; }
@@ -32,6 +73,17 @@ namespace DataAccessLayer.Concrete
         public DbSet<BlogRating> BlogRatings { get; set; }
 
         public DbSet<Notification> Notifications { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
+        public DbSet<Team> Teams { get; set; }
+
+        public DbSet<Match> Matches { get; set; }
+
+        public DbSet<Message2> Message2s { get; set; }
+
+        public DbSet<Admin> Admins { get; set; }
+
 
     }
 }

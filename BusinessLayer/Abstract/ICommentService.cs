@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICommentService
+    public interface ICommentService: IGenericService<Comment>
     {
         void CommentAdd(Comment comment);
 
@@ -16,6 +16,9 @@ namespace BusinessLayer.Abstract
         //void CategoryUpdate(Category category);
 
         List<Comment> GetList(int id);
+
+        List<Comment> GetCommentWithBlog();
+
 
         //Comment GetById(int id);
     }
